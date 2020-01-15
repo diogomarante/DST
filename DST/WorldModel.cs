@@ -95,22 +95,20 @@ namespace MCTS.DST.WorldModels
 
             this.AvailableActions = new List<ActionDST>();
             
-            ActionDST action;
             //this.AvailableActions.Add(action);
            
             if (Possesses("berries"))
             {
-                action = new Eat("berries");
-                this.AvailableActions.Add(action);
+                this.AvailableActions.Add(new Eat("berries"));
+                this.AvailableActions.Add(new Drop("berries"));
             }
             if (Possesses("carrot"))
             {
-                action = new Eat("carrot");
-                this.AvailableActions.Add(action);
+                this.AvailableActions.Add(new Eat("carrot"));
+                this.AvailableActions.Add(new Drop("berries"));
             }
 
-            action = new Wander();
-            this.AvailableActions.Add(action);
+            this.AvailableActions.Add(new Wander());
         }
 
         //Getting next action for mcts selection

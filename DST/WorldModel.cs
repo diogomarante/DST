@@ -20,6 +20,11 @@ namespace MCTS.DST.WorldModels
         public List<ActionDST> AvailableActions;      
         public int ActionTracker = 0;
 
+        public List<string> foods = new List<string>();
+
+        public List<string> weapons = new List<string>();
+
+
         protected WorldModelDST Parent;
 
         public WorldModelDST(Character character, List<Pair<Pair<string, int>, Pair<int, int>>> worldObjects, List<Pair<string, int>> possessedItems, List<string> equippedItems, float cycle, int[] cycleInfo, List<ActionDST> availableActions, WorldModelDST parent, List<Pair<string, int>> fuel, List<Tuple<string, int, int>> fire)
@@ -94,18 +99,36 @@ namespace MCTS.DST.WorldModels
             //Getting Available Actions
 
             this.AvailableActions = new List<ActionDST>();
+
+            //init foods and weapons
             
+            this.foods.Add("berries");
+            this.foods.Add("carrots");
+            this.weapons.Add("axe");
+            this.weapons.Add("pickaxe");
+
             //this.AvailableActions.Add(action);
-           
-            if (Possesses("berries"))
+
+            foreach (var food in foods)
             {
-                this.AvailableActions.Add(new Eat("berries"));
-                this.AvailableActions.Add(new Drop("berries"));
+                if (Possesses(food))
+                {
+                    this.AvailableActions.Add(new Eat(food));
+                    this.AvailableActions.Add(new Drop(food));
+                }
             }
-            if (Possesses("carrot"))
+            foreach (var weapon in weapons)
             {
-                this.AvailableActions.Add(new Eat("carrot"));
-                this.AvailableActions.Add(new Drop("berries"));
+                if (Possesses(weapon))
+                {
+                    this.AvailableActions.Add(new Equip(weapon));
+                    this.AvailableActions.Add(new Drop(weapon));
+                }
+                if (IsEquipped(weapon))
+                {
+                    this.AvailableActions.Add(new Unequip(weapon));
+                    this.AvailableActions.Add(new Drop(weapon)); // is this possible?
+                }
             }
 
             this.AvailableActions.Add(new Wander());

@@ -107,6 +107,16 @@ namespace MCTS.DST.WorldModels
                     this.AvailableActions.Add(action);
                 }
             }
+
+            //Getting Pick based Actions
+            foreach (var pickable in Pick.PickableConverter.Keys)
+            {
+                if (WorldHas(pickable))
+                {
+                    action = new Pick(pickable);
+                    this.AvailableActions.Add(action);
+                }
+            }
             //</OPTIMIZATION>
 
             /*<OLD_CODE>

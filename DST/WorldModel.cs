@@ -18,7 +18,6 @@ namespace MCTS.DST.WorldModels
         public float Cycle;
         public int[] CycleInfo;
         public List<ActionDST> AvailableActions;      
-        public int ActionTracker = 0;
 
         protected WorldModelDST Parent;
 
@@ -93,12 +92,25 @@ namespace MCTS.DST.WorldModels
 
             //Getting Available Actions
 
+            //Getting Wander
             this.AvailableActions = new List<ActionDST>();
-            
-            ActionDST action;
-            //this.AvailableActions.Add(action);
-           
-            if (Possesses("berries"))
+            ActionDST action = new Wander();
+            this.AvailableActions.Add(action);
+
+            //<OPTIMIZATION - generalized cases from action's own lists>
+            //Getting Eat based Actions
+            foreach (var food in Eat.FoodIndex.Keys)
+            {
+                if (Possesses(food))
+                {
+                    action = new Eat(food);
+                    this.AvailableActions.Add(action);
+                }
+            }
+            //</OPTIMIZATION>
+
+            /*<OLD_CODE>
+                       if (Possesses("berries"))
             {
                 action = new Eat("berries");
                 this.AvailableActions.Add(action);
@@ -108,18 +120,8 @@ namespace MCTS.DST.WorldModels
                 action = new Eat("carrot");
                 this.AvailableActions.Add(action);
             }
+          </OLD_CODE>*/
 
-            action = new Wander();
-            this.AvailableActions.Add(action);
-        }
-
-        //Getting next action for mcts selection
-        public ActionDST GetNextAction() //
-        {
-            if (this.ActionTracker < this.AvailableActions.Count ) {
-                return this.AvailableActions[this.ActionTracker++];               
-            }
-            return null;
         }
 
         public List<ActionDST> GetExecutableActions()

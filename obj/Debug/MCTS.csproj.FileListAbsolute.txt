@@ -1,0 +1,116 @@
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csprojResolveAssemblyReference.cache
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csproj.CoreCompileInputs.cache
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Serialization.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Utilities.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\RageAssetManager.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.pdb
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.dll
+C:\Users\RicardoManuel\Desktop\Toolkit e DST originais\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Serialization.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Utilities.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\RageAssetManager.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.pdb
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csprojResolveAssemblyReference.cache
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csproj.CoreCompileInputs.cache
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.dll
+C:\Ricardo\LMAC\3º Ano 2º Semestre\[Proj] Projeto\Projeto DST\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csprojAssemblyReference.cache
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Serialization.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Utilities.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\RageAssetManager.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.pdb
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csproj.CopyComplete
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.dll
+C:\Users\Manue\Desktop\FAtIMA-MCTS\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csprojAssemblyReference.cache
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\MCTS.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Serialization.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Utilities.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\RageAssetManager.dll
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\AutobiographicMemory.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Conditions.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\CommeillFaut.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.pdb
+C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csproj.CopyComplete

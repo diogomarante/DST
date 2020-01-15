@@ -18,7 +18,6 @@ namespace MCTS.DST.WorldModels
         public float Cycle;
         public int[] CycleInfo;
         public List<ActionDST> AvailableActions;      
-        public int ActionTracker = 0;
 
         public List<string> foods = new List<string>();
 
@@ -98,18 +97,25 @@ namespace MCTS.DST.WorldModels
 
             //Getting Available Actions
 
+            //Getting Wander
             this.AvailableActions = new List<ActionDST>();
+            ActionDST action = new Wander();
+            this.AvailableActions.Add(action);
 
-            //init foods and weapons
-            
-            this.foods.Add("berries");
-            this.foods.Add("carrots");
-            this.weapons.Add("axe");
-            this.weapons.Add("pickaxe");
+            //<OPTIMIZATION - generalized cases from action's own lists>
+            //Getting Eat based Actions
+            foreach (var food in Eat.FoodIndex.Keys)
+            {
+                if (Possesses(food))
+                {
+                    action = new Eat(food);
+                    this.AvailableActions.Add(action);
+                }
+            }
+            //</OPTIMIZATION>
 
-            //this.AvailableActions.Add(action);
-
-            foreach (var food in foods)
+            /*<OLD_CODE>
+                       if (Possesses("berries"))
             {
                 if (Possesses(food))
                 {
@@ -130,6 +136,7 @@ namespace MCTS.DST.WorldModels
                     this.AvailableActions.Add(new Drop(weapon)); // is this possible?
                 }
             }
+          </OLD_CODE>*/
 
             this.AvailableActions.Add(new Wander());
         }
@@ -141,7 +148,7 @@ namespace MCTS.DST.WorldModels
                 return this.AvailableActions[this.ActionTracker++];               
             }
             return null;
-        }
+      }
 
         public List<ActionDST> GetExecutableActions()
         {

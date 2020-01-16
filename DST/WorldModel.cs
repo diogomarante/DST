@@ -105,7 +105,7 @@ namespace MCTS.DST.WorldModels
             //Getting Wander
             this.checkWorldObjects();
             this.AvailableActions = new List<ActionDST>();
-            this.AvailableActions.Add(new Wander());
+            
 
             //<OPTIMIZATION - generalized cases from action's own lists>
             //Getting Eat based Actions
@@ -129,6 +129,8 @@ namespace MCTS.DST.WorldModels
 
             foreach (var weapon in this.EquippedItems)
             {
+                this.AvailableActions.Add(new Unequip(weapon));
+
                 if (weapon == "axe")
                 {
                     foreach (var obj in this.WorldObjects)
@@ -157,6 +159,23 @@ namespace MCTS.DST.WorldModels
 
                 }
             }
+
+            //TODO dict in Pickup action with all pickable items
+
+            foreach (var obj in this.WorldObjects)
+            {
+                foreach ( var pickable in Pickup.Pickables)
+                {
+                    if (obj.Item1.Item1 == pickable && obj.Item1.Item2 > 0)
+                    {
+                        this.AvailableActions.Add(new Pickup(pickable, 1));
+
+                    }
+                }
+               
+            }
+            this.AvailableActions.Add(new Wander());
+
             //this.checkAvailableActions();
         }
 
@@ -237,6 +256,8 @@ namespace MCTS.DST.WorldModels
         public ActionDST GetNextAction() //
         {
             if (this.ActionTracker < this.AvailableActions.Count ) {
+                Console.WriteLine("Tracker: " + ActionTracker);
+
                 return this.AvailableActions[this.ActionTracker++];               
             }
             return null;

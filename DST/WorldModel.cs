@@ -17,7 +17,16 @@ namespace MCTS.DST.WorldModels
 
         public float Cycle;
         public int[] CycleInfo;
-        public List<ActionDST> AvailableActions;      
+        public List<ActionDST> AvailableActions;
+        public int ActionTracker = 0;
+        public int PosX;
+        public int PosZ;
+
+
+        public List<string> foods = new List<string>();
+
+        public List<string> weapons = new List<string>();
+
 
         protected WorldModelDST Parent;
 
@@ -44,14 +53,14 @@ namespace MCTS.DST.WorldModels
             this.CycleInfo = preWorldState.CycleInfo;
 
             //Getting Inventory from PreWorldState
-            
-            int size1 = preWorldState.Inventory.Count;            
+
+            int size1 = preWorldState.Inventory.Count;
             this.PossessedItems = new List<Pair<string, int>>(size1);
 
             for (int i = 0; i < size1; i++)
             {
                 Pair<string, int> tuple1 = new Pair<string, int>(preWorldState.Inventory[i].Item1, preWorldState.Inventory[i].Item3);
-                this.PossessedItems.Add(tuple1);               
+                this.PossessedItems.Add(tuple1);
             }
 
             //Getting Fuel items from PreWorldState
@@ -74,7 +83,7 @@ namespace MCTS.DST.WorldModels
             this.EquippedItems = new List<string>(size2);
 
             for (int i = 0; i < size2; i++)
-            {                
+            {
                 this.EquippedItems.Add(preWorldState.Equipped[i].Item1);
             }
 
@@ -90,21 +99,23 @@ namespace MCTS.DST.WorldModels
                 this.WorldObjects.Add(tolist);
             }
 
+
             //Getting Available Actions
 
             //Getting Wander
+            this.checkWorldObjects();
             this.AvailableActions = new List<ActionDST>();
-            ActionDST action = new Wander();
-            this.AvailableActions.Add(action);
+            this.AvailableActions.Add(new Wander());
 
             //<OPTIMIZATION - generalized cases from action's own lists>
             //Getting Eat based Actions
             foreach (var food in Eat.FoodIndex.Keys)
             {
-                if (Possesses(food))
+                int quantity = this.GetQuantity(food);
+                if (quantity > 0)
                 {
-                    action = new Eat(food);
-                    this.AvailableActions.Add(action);
+                    this.AvailableActions.Add(new Eat(food));
+                    this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
                 }
             }
 
@@ -119,20 +130,128 @@ namespace MCTS.DST.WorldModels
             }
             //</OPTIMIZATION>
 
-            /*<OLD_CODE>
-                       if (Possesses("berries"))
+            foreach (var weapon in Equip.Weapons)
             {
-                action = new Eat("berries");
-                this.AvailableActions.Add(action);
+                if (Possesses(weapon))
+                {
+                    this.AvailableActions.Add(new Equip(weapon));
+                }
             }
-            if (Possesses("carrot"))
-            {
-                action = new Eat("carrot");
-                this.AvailableActions.Add(action);
-            }
-          </OLD_CODE>*/
 
+            foreach (var weapon in this.EquippedItems)
+            {
+                if (weapon == "axe")
+                {
+                    foreach (var obj in this.WorldObjects)
+                    {
+                        if (obj.Item1.Item1 == "tree")
+                        {
+                            this.AvailableActions.Add(new Chop("tree"));
+
+                        }
+                    }
+
+                }
+            }
+
+            foreach (var weapon in this.EquippedItems)
+            {
+                if (weapon == "pickaxe")
+                {
+                    foreach (var obj in this.WorldObjects)
+                    {
+                        if (obj.Item1.Item1 == "boulder")
+                        {
+                            this.AvailableActions.Add(new Chop("boulder"));
+                        }
+                    }
+
+                }
+            }
+            //this.checkAvailableActions();
         }
+
+        public void checkWorldObjects()
+        {
+            foreach (var obj in this.WorldObjects)
+            {
+                Console.WriteLine(obj);
+            }
+        }
+
+        public void checkAvailableActions()
+        {
+            foreach (var action in this.AvailableActions)
+            {
+                Console.WriteLine(action);
+            }
+        }
+
+
+        public float Score(WorldModelDST newWorld)
+        {
+           
+            float total = 0;
+            total += statusIncrease(1);
+            total += statusLow(1);
+            total += inventoryIncreased(0.5f);
+            total += hasAxes(1);
+            total += this.LightValueDay() + this.LightValueNight();
+            Console.WriteLine("Score: " + total);
+            return total;
+
+            float statusIncrease(float ratio)
+            {
+                float sum = 0;
+                sum += newWorld.Walter.HP - this.Walter.HP;
+                sum += newWorld.Walter.Hunger - this.Walter.Hunger;
+                sum += newWorld.Walter.Sanity - this.Walter.Sanity;
+                return sum * ratio;
+            }
+            float statusLow(float ratio)
+            {
+                float sum = 0;
+                if (newWorld.Walter.HP < 50)
+                {
+                    sum -= 1;
+                }
+                if (newWorld.Walter.Hunger < 50)
+                {
+                    sum -= 1;
+                }
+                if (newWorld.Walter.Sanity < 50)
+                {
+                    sum -= 1;
+                }
+                return sum * ratio;
+            }
+            float inventoryIncreased(float ratio)
+            {
+                return (newWorld.PossessedItems.Count - this.PossessedItems.Count) * ratio;
+            }
+            float hasAxes(float ratio)
+            {
+                float sum = 0;
+                foreach ( var weapon in Equip.Weapons)
+                {
+                    if (newWorld.Possesses(weapon) || newWorld.IsEquipped(weapon))
+                    {
+                        sum += 1;
+                    }
+                }
+                return sum * ratio;
+            }
+        }
+    
+
+        //Getting next action for mcts selection
+        public ActionDST GetNextAction() //
+        {
+            if (this.ActionTracker < this.AvailableActions.Count ) {
+                return this.AvailableActions[this.ActionTracker++];               
+            }
+            return null;
+      }
 
         public List<ActionDST> GetExecutableActions()
         {
@@ -205,6 +324,17 @@ namespace MCTS.DST.WorldModels
             return r;
         }
 
+        public int GetQuantity(string prefab)
+        {
+            foreach (Pair<string, int> tuple in this.PossessedItems)
+            {
+                if (tuple.Item1 == prefab)
+                {
+                    return tuple.Item2; // quantity;
+                }
+            }
+            return 0;
+        }
         public Boolean Possesses(string prefab)
         {
             Boolean r = false;

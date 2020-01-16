@@ -34,6 +34,11 @@
     <Compile Include="DST\Actions\ActionDST.cs" />
     <Compile Include="DST\Actions\Build.cs" />
     <Compile Include="DST\Actions\Chop.cs" />
+    <Compile Include="DST\Actions\Mine.cs" />
+    <Compile Include="DST\Actions\Pickup.cs" />
+    <Compile Include="DST\Actions\Unequip.cs" />
+    <Compile Include="DST\Actions\Equip.cs" />
+    <Compile Include="DST\Actions\Drop.cs" />
     <Compile Include="DST\Actions\NextAction.cs" />
     <Compile Include="DST\Actions\Pick.cs" />
     <Compile Include="DST\Character.cs" />

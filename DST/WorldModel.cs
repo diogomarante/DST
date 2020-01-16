@@ -105,7 +105,8 @@ namespace MCTS.DST.WorldModels
             //Getting Wander
             this.checkWorldObjects();
             this.AvailableActions = new List<ActionDST>();
-            
+            this.AvailableActions.Add(new Wander());
+
 
             //<OPTIMIZATION - generalized cases from action's own lists>
             //Getting Eat based Actions
@@ -174,7 +175,6 @@ namespace MCTS.DST.WorldModels
                 }
                
             }
-            this.AvailableActions.Add(new Wander());
 
             //this.checkAvailableActions();
         }
@@ -212,7 +212,7 @@ namespace MCTS.DST.WorldModels
             {
                 float sum = 0;
                 sum += newWorld.Walter.HP - this.Walter.HP;
-                sum += newWorld.Walter.Hunger - this.Walter.Hunger;
+                sum += this.Walter.Hunger - newWorld.Walter.Hunger;
                 sum += newWorld.Walter.Sanity - this.Walter.Sanity;
                 return sum * ratio;
             }
@@ -223,7 +223,7 @@ namespace MCTS.DST.WorldModels
                 {
                     sum -= 1;
                 }
-                if (newWorld.Walter.Hunger < 50)
+                if (newWorld.Walter.Hunger > 50)
                 {
                     sum -= 1;
                 }

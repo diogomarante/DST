@@ -10,6 +10,9 @@ namespace MCTS.DST
     {
         public const float C = 1.4f;
         public bool InProgress { get; private set; }
+
+        private bool SHOULDRUN = true;
+
         public int MaxIterations { get; set; }
         public int MaxPlayouts { get; set; } //
         public int CurrentPlayout { get; set; } // 
@@ -49,6 +52,10 @@ namespace MCTS.DST
 
         public ActionDST Run()
         {
+            if (!this.SHOULDRUN)
+            {
+                return new Wander();
+            }
             MCTSNode selectedNode; //need to copy?
             float reward;
 

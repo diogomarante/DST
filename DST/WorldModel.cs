@@ -103,6 +103,7 @@ namespace MCTS.DST.WorldModels
             //Getting Available Actions
 
             //Getting Wander
+            this.checkWorldObjects();
             this.AvailableActions = new List<ActionDST>();
             this.AvailableActions.Add(new Wander());
 
@@ -126,35 +127,46 @@ namespace MCTS.DST.WorldModels
                 }
             }
 
-
-            //</OPTIMIZATION>
-
-            /*<OLD_CODE>
-                       if (Possesses("berries"))
+            foreach (var weapon in this.EquippedItems)
             {
-                if (Possesses(food))
+                if (weapon == "axe")
                 {
-                    this.AvailableActions.Add(new Eat(food));
-                    this.AvailableActions.Add(new Drop(food));
+                    foreach (var obj in this.WorldObjects)
+                    {
+                        if (obj.Item1.Item1 == "tree")
+                        {
+                            this.AvailableActions.Add(new Chop("tree"));
+
+                        }
+                    }
+
                 }
             }
-            foreach (var weapon in weapons)
+
+            foreach (var weapon in this.EquippedItems)
             {
-                if (Possesses(weapon))
+                if (weapon == "pickaxe")
                 {
-                    this.AvailableActions.Add(new Equip(weapon));
-                    this.AvailableActions.Add(new Drop(weapon));
-                }
-                if (IsEquipped(weapon))
-                {
-                    this.AvailableActions.Add(new Unequip(weapon));
-                    this.AvailableActions.Add(new Drop(weapon)); // is this possible?
+                    foreach (var obj in this.WorldObjects)
+                    {
+                        if (obj.Item1.Item1 == "boulder")
+                        {
+                            this.AvailableActions.Add(new Chop("boulder"));
+                        }
+                    }
+
                 }
             }
-          </OLD_CODE>*/
-
-            this.AvailableActions.Add(new Wander());
         }
+
+        public void checkWorldObjects()
+        {
+            foreach (var obj in this.WorldObjects)
+            {
+                Console.WriteLine(obj);
+            }
+        }
+
 
         //Getting next action for mcts selection
         public ActionDST GetNextAction() //

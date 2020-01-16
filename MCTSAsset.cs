@@ -19,7 +19,6 @@ namespace MCTS
         private MCTSAlgorithm Mcts;
         private List<Pair<string, string>> ToDoActionsList;
         private Pair<string,int> NextActionInfo;
-      
         public MCTSAsset()
         {
             m_kb = null;
@@ -97,17 +96,19 @@ namespace MCTS
                     Console.WriteLine(action.Name);
                 }
                 Console.WriteLine("");
-
+              
                 this.Mcts = new MCTSAlgorithm(worldModel);
                 this.Mcts.InitializeMCTSearch();
 
                 ActionDST MacroAction = this.Mcts.Run();
-             
+
                 this.ToDoActionsList = MacroAction.Decompose(preWorldState);
-                
+
                 this.NextActionInfo = MacroAction.NextActionInfo();
                 this.NextActionInfo.Item1 = preWorldState.CompleteNextActionInfo(this.NextActionInfo.Item1);
                 Console.WriteLine(this.NextActionInfo);
+                
+                
             }
 
             Pair<string, string> CurrentAction = this.ToDoActionsList[0];

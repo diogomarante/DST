@@ -53,14 +53,14 @@ namespace MCTS.DST.WorldModels
             this.CycleInfo = preWorldState.CycleInfo;
 
             //Getting Inventory from PreWorldState
-            
-            int size1 = preWorldState.Inventory.Count;            
+
+            int size1 = preWorldState.Inventory.Count;
             this.PossessedItems = new List<Pair<string, int>>(size1);
 
             for (int i = 0; i < size1; i++)
             {
                 Pair<string, int> tuple1 = new Pair<string, int>(preWorldState.Inventory[i].Item1, preWorldState.Inventory[i].Item3);
-                this.PossessedItems.Add(tuple1);               
+                this.PossessedItems.Add(tuple1);
             }
 
             //Getting Fuel items from PreWorldState
@@ -83,7 +83,7 @@ namespace MCTS.DST.WorldModels
             this.EquippedItems = new List<string>(size2);
 
             for (int i = 0; i < size2; i++)
-            {                
+            {
                 this.EquippedItems.Add(preWorldState.Equipped[i].Item1);
             }
 
@@ -157,6 +157,7 @@ namespace MCTS.DST.WorldModels
 
                 }
             }
+            //this.checkAvailableActions();
         }
 
         public void checkWorldObjects()
@@ -167,6 +168,70 @@ namespace MCTS.DST.WorldModels
             }
         }
 
+        public void checkAvailableActions()
+        {
+            foreach (var action in this.AvailableActions)
+            {
+                Console.WriteLine(action);
+            }
+        }
+
+
+        public float Score(WorldModelDST newWorld)
+        {
+           
+            float total = 0;
+            total += statusIncrease(1);
+            total += statusLow(1);
+            total += inventoryIncreased(0.5f);
+            total += hasAxes(1);
+            total += this.LightValueDay() + this.LightValueNight();
+            Console.WriteLine("Score: " + total);
+            return total;
+
+            float statusIncrease(float ratio)
+            {
+                float sum = 0;
+                sum += newWorld.Walter.HP - this.Walter.HP;
+                sum += newWorld.Walter.Hunger - this.Walter.Hunger;
+                sum += newWorld.Walter.Sanity - this.Walter.Sanity;
+                return sum * ratio;
+            }
+            float statusLow(float ratio)
+            {
+                float sum = 0;
+                if (newWorld.Walter.HP < 50)
+                {
+                    sum -= 1;
+                }
+                if (newWorld.Walter.Hunger < 50)
+                {
+                    sum -= 1;
+                }
+                if (newWorld.Walter.Sanity < 50)
+                {
+                    sum -= 1;
+                }
+                return sum * ratio;
+            }
+            float inventoryIncreased(float ratio)
+            {
+                return (newWorld.PossessedItems.Count - this.PossessedItems.Count) * ratio;
+            }
+            float hasAxes(float ratio)
+            {
+                float sum = 0;
+                foreach ( var weapon in Equip.Weapons)
+                {
+                    if (newWorld.Possesses(weapon) || newWorld.IsEquipped(weapon))
+                    {
+                        sum += 1;
+                    }
+                }
+                return sum * ratio;
+            }
+        }
+    
 
         //Getting next action for mcts selection
         public ActionDST GetNextAction() //

@@ -57,31 +57,6 @@ namespace MCTS.DST.Actions
                 }
             }
 
-            //</OPTIMIZATION>
-
-//          <OLD_CODE>   
-//            if (this.Target == "berries")
-//            {
-//                worldModel.RemoveFromPossessedItems("berries", 1);
-//                worldModel.DecreaseHunger(9);
-//
-//                if (!worldModel.Possesses("berries"))
-//                {
-//                    worldModel.RemoveAction("Eat_berries");
-//                }
-//            }
-//            else if (this.Target == "carrot")
-//            {
-//                worldModel.RemoveFromPossessedItems("carrot", 1);
-//                worldModel.DecreaseHunger(13);
-//                worldModel.IncreaseHP(1);
-//
-//                if (!worldModel.Possesses("carrot"))
-//                {
-//                    worldModel.RemoveAction("Eat_carrot");
-//                }
-//            }    
-//          </OLD_CODE>
         }
 
         public override List<Pair<string, string>> Decompose(PreWorldState preWorldState)

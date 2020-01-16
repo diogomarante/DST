@@ -73,7 +73,7 @@ namespace MCTS.DST
 
         protected MCTSNode Selection(MCTSNode nodeToDoSelection)
         {
-            Console.WriteLine("Selection...");
+            //Console.WriteLine("Selection...");
             ActionDST nextAction;
             MCTSNode currentNode = nodeToDoSelection;
 
@@ -94,7 +94,7 @@ namespace MCTS.DST
 
         protected MCTSNode Expand(MCTSNode parent, ActionDST action)
         {
-            Console.WriteLine("Expand...");
+            //Console.WriteLine("Expand...");
 
             MCTSNode child = new MCTSNode(parent.State.GenerateChildWorldModel())
             {
@@ -109,7 +109,7 @@ namespace MCTS.DST
         }
 
         protected float Playouts(WorldModelDST initialPlayoutState) {
-            Console.WriteLine("Playouts...");
+            //Console.WriteLine("Playouts...");
 
             List<float> rewards = new List<float>(this.MaxPlayouts);
             float total = 0;
@@ -117,7 +117,7 @@ namespace MCTS.DST
                  CurrentPlayout < MaxPlayouts;
                  CurrentPlayout++) 
             {
-                Console.WriteLine("Playout n." + CurrentPlayout.ToString());
+                //Console.WriteLine("Playout n." + CurrentPlayout.ToString());
 
                 float reward = Playout(initialPlayoutState);
                 rewards.Add(reward);
@@ -148,12 +148,12 @@ namespace MCTS.DST
                 actions = clone.GetExecutableActions();
                 foreach(var a in actions)
                 {
-                    Console.WriteLine(a);
+                   // Console.WriteLine(a);
 
                 }
 
                 size = actions.Count;
-                Console.WriteLine("size:" + size);
+                //Console.WriteLine("size:" + size);
 
                 random = this.RandomGenerator.Next(0, size-1);
                 actions[random].ApplyActionEffects(clone);
@@ -162,7 +162,7 @@ namespace MCTS.DST
                 CurrentDepth++;
             }
             //return score
-            return 10.0f;
+            return initialPlayoutState.Score(clone);
         }
 
         protected virtual void Backpropagate(MCTSNode node, float reward)

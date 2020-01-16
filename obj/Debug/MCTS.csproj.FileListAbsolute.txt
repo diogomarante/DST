@@ -97,10 +97,8 @@ C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\b
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalAppraisal.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Rage.dll
-C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\GAIPS.Serialization.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\KnowledgeBase.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.dll
-C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\Utilities.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\WellFormedNames.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\RageAssetManager.dll
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\ActionLibrary.pdb

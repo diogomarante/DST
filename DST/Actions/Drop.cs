@@ -15,7 +15,7 @@ namespace MCTS.DST.Actions
         public int Quantity;
         public Pair<int, int> Position;
 
-        public Drop(string invobject, int quantity, Pair<int, int> position) : base("Drop_" + target)
+        public Drop(string invobject, int quantity, Pair<int, int> position) : base("Drop_" + invobject)
         {
             this.InvObject = invobject;
             this.Duration = 0.05f;

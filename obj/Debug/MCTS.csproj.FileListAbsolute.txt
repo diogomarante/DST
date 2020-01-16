@@ -114,3 +114,6 @@ C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\b
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\EmotionalDecisionMaking.pdb
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\bin\Debug\SocialImportanceAsset.pdb
 C:\Users\diogo\OneDrive\Técnico\1º ano\IAJ\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csproj.CopyComplete
+D:\IST\IAJ\FATIMA\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.csprojAssemblyReference.cache
+D:\IST\IAJ\FATIMA\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.dll
+D:\IST\IAJ\FATIMA\FAtiMA-Toolkit-master\Assets\MCTS\obj\Debug\MCTS.pdb

@@ -10,8 +10,8 @@ namespace MCTS.DST.Actions
 
     public class Build : ActionDST
     {
-        public string X;
-        public string Y;
+        public string X = "-";
+        public string Y = "-";
         public string Recipe;
         public float Duration;
         public static Dictionary<string, Dictionary<string, int>> Recipes = new Dictionary<string, Dictionary<string, int>>() //Recipes
@@ -48,8 +48,6 @@ namespace MCTS.DST.Actions
         
         public Build(string Recipe) : base("Build_" + Recipe)
         {
-            this.X = "-";
-            this.Y = "-";
             this.Recipe = Recipe;
             this.Duration = 0.05f;
         }
@@ -63,6 +61,11 @@ namespace MCTS.DST.Actions
                 foreach (var item in Recipes[this.Recipe])
                 {
                     worldModel.RemoveFromPossessedItems(item.Key, item.Value);
+                }
+
+                if (this.X != "-" && this.Y != "-")
+                {
+                    worldModel.AddToFire(this.Recipe, Convert.ToInt32(this.X), Convert.ToInt32(this.Y));
                 }
 
 //                if (!worldModel.Possesses(this.Recipe))

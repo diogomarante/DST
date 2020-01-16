@@ -11,6 +11,12 @@ namespace MCTS.DST.Actions
     {
         public string Target;
         public float Duration;
+        public static List<string> Weapons = new List<string>() //List of values for each weapon 
+        {
+            "axe",
+            "pickaxe"
+           
+        };
 
         public Equip(string target) : base("Equip_" + target)
         {

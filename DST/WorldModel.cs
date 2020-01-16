@@ -17,7 +17,11 @@ namespace MCTS.DST.WorldModels
 
         public float Cycle;
         public int[] CycleInfo;
-        public List<ActionDST> AvailableActions;      
+        public List<ActionDST> AvailableActions;
+        public int ActionTracker = 0;
+        public int PosX;
+        public int PosZ;
+
 
         public List<string> foods = new List<string>();
 
@@ -95,23 +99,34 @@ namespace MCTS.DST.WorldModels
                 this.WorldObjects.Add(tolist);
             }
 
+
             //Getting Available Actions
 
             //Getting Wander
             this.AvailableActions = new List<ActionDST>();
-            ActionDST action = new Wander();
-            this.AvailableActions.Add(action);
+            this.AvailableActions.Add(new Wander());
 
             //<OPTIMIZATION - generalized cases from action's own lists>
             //Getting Eat based Actions
             foreach (var food in Eat.FoodIndex.Keys)
             {
-                if (Possesses(food))
+                int quantity = this.GetQuantity(food);
+                if (quantity > 0)
                 {
-                    action = new Eat(food);
-                    this.AvailableActions.Add(action);
+                    this.AvailableActions.Add(new Eat(food));
+                    this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
                 }
             }
+
+            foreach (var weapon in Equip.Weapons)
+            {
+                if (Possesses(weapon))
+                {
+                    this.AvailableActions.Add(new Equip(weapon));
+                }
+            }
+
+
             //</OPTIMIZATION>
 
             /*<OLD_CODE>
@@ -221,6 +236,17 @@ namespace MCTS.DST.WorldModels
             return r;
         }
 
+        public int GetQuantity(string prefab)
+        {
+            foreach (Pair<string, int> tuple in this.PossessedItems)
+            {
+                if (tuple.Item1 == prefab)
+                {
+                    return tuple.Item2; // quantity;
+                }
+            }
+            return 0;
+        }
         public Boolean Possesses(string prefab)
         {
             Boolean r = false;

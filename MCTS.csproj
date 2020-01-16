@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DST\Actions\ActionDST.cs" />
+    <Compile Include="DST\Actions\Pickup.cs" />
     <Compile Include="DST\Actions\Unequip.cs" />
     <Compile Include="DST\Actions\Equip.cs" />
     <Compile Include="DST\Actions\Drop.cs" />

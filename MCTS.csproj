@@ -49,6 +49,7 @@
     <Compile Include="DST\PreWorldState.cs" />
     <Compile Include="DST\Actions\Wander.cs" />
     <Compile Include="DST\WorldModel.cs" />
+    <Compile Include="DST\WorldModelFEAR.cs" />
     <Compile Include="MCTSAsset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -349,28 +349,13 @@ namespace MCTS.DST.WorldModels
 
         public new void RemoveFromWorld(string prefab, int quantity)
         {
-            this.PossessedItems[PossessedItemsIndex[prefab]] -= quantity;
+            this.WorldObjects[PossessedItemsIndex[prefab]] -= quantity;
         }
 
         public void AddToWorld(string prefab, int quantity, int posx, int posz)
         {
-            Boolean r = true;
-            foreach (var tuple in this.WorldObjects)
-            {
-                if (tuple.Item1.Item1 == prefab)
-                {
-                    tuple.Item1.Item2 += quantity;
-                    r = false;
-                    break;
-                }
-            }
-            if (r)
-            {
-                Pair<int, int> position = new Pair<int, int>(posx, posz);
-                Pair<string, int> newitem = new Pair<string, int>(prefab, quantity);
-                Pair<Pair<string, int>, Pair<int, int>> newpair = new Pair<Pair<string, int>, Pair<int, int>>(newitem, position);
-                this.WorldObjects.Add(newpair);
-            }
+            this.WorldObjects[PossessedItemsIndex[prefab]] += quantity;
+            this.WorldObjectsPos[PossessedItemsIndex[prefab]] = new Pair<int, int>(posx, posz);
         }
 
         public void RemoveAction(string actionName)
@@ -544,16 +529,16 @@ namespace MCTS.DST.WorldModels
                     }                   
                 }
             }
-            else if (place == "world")
-            {
-                foreach (var item in this.WorldObjects)
-                {
-                    if (item.Item1.Item1 == prefab)
-                    {
-                        return item.Item2;
-                    }
-                }
-            }
+//            else if (place == "world")
+//            {
+//                foreach (var item in this.WorldObjects)
+//                {
+//                    if (item.Item1.Item1 == prefab)
+//                    {
+//                        return item.Item2;
+//                    }
+//                }
+//            }
 
             return this.Walter.Position;
         }

@@ -186,7 +186,7 @@ namespace MCTS.DST.WorldModels
             total += inventoryIncreased(0.5f);
             total += hasAxes(1);
             total += this.LightValueDay() + this.LightValueNight();
-            Console.WriteLine("Score: " + total);
+            //Console.WriteLine("Score: " + total);
             return total;
 
             float statusIncrease(float ratio)

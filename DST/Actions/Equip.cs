@@ -9,7 +9,7 @@ namespace MCTS.DST.Actions
 {
     class Equip : ActionDST
     {
-        public string Target;
+        public string InvObject;
         public float Duration;
         public static List<string> Weapons = new List<string>() //List of values for each weapon 
         {
@@ -18,9 +18,9 @@ namespace MCTS.DST.Actions
            
         };
 
-        public Equip(string target) : base("Equip_" + target)
+        public Equip(string invobject) : base("Equip_" + invobject)
         {
-            this.Target = target;
+            this.InvObject = invobject;
             this.Duration = 0.05f;
         }
 
@@ -30,20 +30,20 @@ namespace MCTS.DST.Actions
         {
             worldModel.Cycle += this.Duration;
 
-            worldModel.AddToEquipped(this.Target);
-            worldModel.RemoveFromPossessedItems(this.Target, 1);
-            worldModel.RemoveAction("Equip_" + this.Target);
+            worldModel.AddToEquipped(this.InvObject);
+            worldModel.RemoveFromPossessedItems(this.InvObject, 1);
+            worldModel.RemoveAction("Equip_" + this.InvObject);
 
         }
 
         public override List<Pair<string, string>> Decompose(PreWorldState preWorldState)
         {
-            int guid = preWorldState.GetInventoryGUID(this.Target);
+            int guid = preWorldState.GetInventoryGUID(this.InvObject);
 
             List<Pair<string, string>> ListOfActions = new List<Pair<string, string>>(1);
             Pair<string, string> pair;
 
-            pair = new Pair<string, string>("Action(EQUIP, -, -, -, -)", guid.ToString());
+            pair = new Pair<string, string>("Action(EQUIP,"+ this.InvObject +", -, -, -)", guid.ToString());
 
             ListOfActions.Add(pair);
 

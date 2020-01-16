@@ -106,6 +106,58 @@
       <HintPath>..\..\packages\Utilities.1.0.0.19854\lib\net35\Utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ActionLibrary.dll" />
+    <Content Include="bin\Debug\ActionLibrary.pdb" />
+    <Content Include="bin\Debug\AutobiographicMemory.dll" />
+    <Content Include="bin\Debug\AutobiographicMemory.pdb" />
+    <Content Include="bin\Debug\CommeillFaut.dll" />
+    <Content Include="bin\Debug\CommeillFaut.pdb" />
+    <Content Include="bin\Debug\Conditions.dll" />
+    <Content Include="bin\Debug\Conditions.pdb" />
+    <Content Include="bin\Debug\EmotionalAppraisal.dll" />
+    <Content Include="bin\Debug\EmotionalAppraisal.pdb" />
+    <Content Include="bin\Debug\EmotionalDecisionMaking.dll" />
+    <Content Include="bin\Debug\EmotionalDecisionMaking.pdb" />
+    <Content Include="bin\Debug\GAIPS.Rage.dll" />
+    <Content Include="bin\Debug\GAIPS.Rage.pdb" />
+    <Content Include="bin\Debug\GAIPS.Serialization.dll" />
+    <Content Include="bin\Debug\KnowledgeBase.dll" />
+    <Content Include="bin\Debug\KnowledgeBase.pdb" />
+    <Content Include="bin\Debug\MCTS.dll" />
+    <Content Include="bin\Debug\MCTS.pdb" />
+    <Content Include="bin\Debug\RageAssetManager.dll" />
+    <Content Include="bin\Debug\SocialImportanceAsset.dll" />
+    <Content Include="bin\Debug\SocialImportanceAsset.pdb" />
+    <Content Include="bin\Debug\Utilities.dll" />
+    <Content Include="bin\Debug\WellFormedNames.dll" />
+    <Content Include="bin\Debug\WellFormedNames.pdb" />
+    <Content Include="bin\Release\ActionLibrary.dll" />
+    <Content Include="bin\Release\ActionLibrary.pdb" />
+    <Content Include="bin\Release\AutobiographicMemory.dll" />
+    <Content Include="bin\Release\AutobiographicMemory.pdb" />
+    <Content Include="bin\Release\CommeillFaut.dll" />
+    <Content Include="bin\Release\CommeillFaut.pdb" />
+    <Content Include="bin\Release\Conditions.dll" />
+    <Content Include="bin\Release\Conditions.pdb" />
+    <Content Include="bin\Release\EmotionalAppraisal.dll" />
+    <Content Include="bin\Release\EmotionalAppraisal.pdb" />
+    <Content Include="bin\Release\EmotionalDecisionMaking.dll" />
+    <Content Include="bin\Release\EmotionalDecisionMaking.pdb" />
+    <Content Include="bin\Release\GAIPS.Rage.dll" />
+    <Content Include="bin\Release\GAIPS.Rage.pdb" />
+    <Content Include="bin\Release\GAIPS.Serialization.dll" />
+    <Content Include="bin\Release\KnowledgeBase.dll" />
+    <Content Include="bin\Release\KnowledgeBase.pdb" />
+    <Content Include="bin\Release\MCTS.dll" />
+    <Content Include="bin\Release\MCTS.pdb" />
+    <Content Include="bin\Release\RageAssetManager.dll" />
+    <Content Include="bin\Release\SocialImportanceAsset.dll" />
+    <Content Include="bin\Release\SocialImportanceAsset.pdb" />
+    <Content Include="bin\Release\Utilities.dll" />
+    <Content Include="bin\Release\WellFormedNames.dll" />
+    <Content Include="bin\Release\WellFormedNames.pdb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

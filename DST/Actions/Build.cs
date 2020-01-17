@@ -11,7 +11,7 @@ namespace MCTS.DST.Actions
     public class Build : ActionDST
     {
         public string X = "-";
-        public string Y = "-";
+        public string Z = "-";
         public string Recipe;
         public float Duration;
         public static Dictionary<string, Dictionary<string, int>> Recipes = new Dictionary<string, Dictionary<string, int>>() //Recipes
@@ -38,10 +38,10 @@ namespace MCTS.DST.Actions
             }},
         };
 
-        public Build(int x, int y, string Recipe) : base("Build_" + Recipe)
+        public Build(int x, int z, string Recipe) : base("Build_" + Recipe)
         {
             this.X = x.ToString();
-            this.Y = y.ToString();
+            this.Z = z.ToString();
             this.Recipe = Recipe;
             this.Duration = 0.05f;
         }        
@@ -63,9 +63,9 @@ namespace MCTS.DST.Actions
                     worldModel.RemoveFromPossessedItems(item.Key, item.Value);
                 }
 
-                if (this.X != "-" && this.Y != "-")
+                if (this.X != "-" && this.Z != "-")
                 {
-                    worldModel.AddToWorld(this.Recipe, 1, Convert.ToInt32(this.X), Convert.ToInt32(this.Y));
+                    worldModel.AddToWorld(this.Recipe, 1, Convert.ToInt32(this.X), Convert.ToInt32(this.Z));
                 }
 
 //                if (!worldModel.Possesses(this.Recipe))
@@ -79,7 +79,7 @@ namespace MCTS.DST.Actions
         {
             List<Pair<string, string>> ListOfActions = new List<Pair<string, string>>(1);
 
-            Pair<string, string> pair = new Pair<string, string>("Action(Build, -, " + this.X + ", " + this.Y + ", " + this.Recipe + ")", "-");
+            Pair<string, string> pair = new Pair<string, string>("Action(Build, -, " + this.X + ", " + this.Z + ", " + this.Recipe + ")", "-");
 
             ListOfActions.Add(pair);
 

@@ -87,8 +87,8 @@ namespace MCTS
                 PreWorldState preWorldState = new PreWorldState(kbCloned);
                
 
-//                WorldModelDST worldModel = new WorldModelOLD_DST(preWorldState);
-                WorldModelDST worldModel = new WorldModelFEAR_DST(preWorldState);
+                WorldModelDST worldModel = new WorldModelOLD_DST(preWorldState);
+                //WorldModelDST worldModel = new WorldModelFEAR_DST(preWorldState);
 
                 Console.WriteLine("Available Actions: ");
 
@@ -102,7 +102,6 @@ namespace MCTS
                 this.Mcts.InitializeMCTSearch();
 
                 ActionDST MacroAction = this.Mcts.Run();
-
                 this.ToDoActionsList = MacroAction.Decompose(preWorldState);
 
                 this.NextActionInfo = MacroAction.NextActionInfo();

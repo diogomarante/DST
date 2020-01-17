@@ -42,7 +42,8 @@ namespace MCTS.DST.WorldModels
 
             //Getting Wander
             this.AvailableActions = new List<ActionDST>();
-            this.AvailableActions.Add(new Wander());
+            //
+
 
             //<OPTIMIZATION - generalized cases from action's own lists>
             //Getting Eat based Actions
@@ -79,6 +80,16 @@ namespace MCTS.DST.WorldModels
                 this.AvailableActions.Add(new Chop("tree"));
             }
 
+            //TODO dict in Pickup action with all pickable items
+
+            foreach ( var pickupable in Pickup.Pickupables)
+            {
+                if (WorldHas(pickupable))
+                {
+                    this.AvailableActions.Add(new Pickup(pickupable, 1));
+                }
+            }
+               
             if (IsEquipped("pickaxe") && WorldHas("boulder"))
             {
                 this.AvailableActions.Add(new Chop("tree"));
@@ -99,20 +110,41 @@ namespace MCTS.DST.WorldModels
         {
            
             float total = 0;
-            total += statusIncrease(1);
+            total += statusIncrease(0.2f);
+            int i = 0;
+            Console.WriteLine("Score: " + i++ + " " + total);
             total += statusLow(1);
+            Console.WriteLine("Score: " + i++ + " " + total);
+
             total += inventoryIncreased(0.5f);
-            total += hasAxes(1);
+            Console.WriteLine("Score: " + i++ + " " + total);
+
+            total += hasAxes(1); 
+            Console.WriteLine("Score: " + i++ + " " + total);
+
             total += this.LightValueDay() + this.LightValueNight();
+            Console.WriteLine("Score: " + i++ + " " + total);
+
+            total += AxePickaxeValue();
+            Console.WriteLine("Score: " + i++ + " " + total);
+
             //Console.WriteLine("Score: " + total);
             return total;
 
             float statusIncrease(float ratio)
             {
                 float sum = 0;
-                sum += newWorld.Walter.HP - this.Walter.HP;
-                sum += newWorld.Walter.Hunger - this.Walter.Hunger;
+                //sum += newWorld.Walter.HP - this.Walter.HP;
+                //Console.WriteLine("HP: " + sum);
+                Console.WriteLine("Hunger old: " + this.Walter.Hunger);
+
+                Console.WriteLine("Hunger new: " + newWorld.Walter.Hunger);
+                sum +=  newWorld.Walter.Hunger - this.Walter.Hunger;
+                Console.WriteLine("Hunger: " + sum);
+
                 sum += newWorld.Walter.Sanity - this.Walter.Sanity;
+                Console.WriteLine("Sanity: " + sum);
+
                 return sum * ratio;
             }
 
@@ -123,7 +155,7 @@ namespace MCTS.DST.WorldModels
                 {
                     sum -= 1;
                 }
-                if (newWorld.Walter.Hunger < 50)
+                if (newWorld.Walter.Hunger > 50)
                 {
                     sum -= 1;
                 }
@@ -158,7 +190,11 @@ namespace MCTS.DST.WorldModels
         public ActionDST GetNextAction() //
         {
             if (this.ActionTracker < this.AvailableActions.Count ) {
-                return this.AvailableActions[this.ActionTracker++];               
+                //Console.WriteLine("Tracker: " + ActionTracker);
+                int ActionTrackerOld = this.ActionTracker;
+                this.ActionTracker = (this.ActionTracker+1) % this.AvailableActions.Count;
+
+                return this.AvailableActions[ActionTrackerOld];               
             }
             return null;
       }
@@ -283,30 +319,30 @@ namespace MCTS.DST.WorldModels
 
         public abstract List<Tuple<string, int, int>> GetFires();
 
-        //public float AxePickaxeValue()
-        //{
-        //    Boolean b1 = this.Possesses("axe");
-        //    Boolean b2 = this.IsEquipped("axe");
-        //    Boolean b3 = this.Possesses("pickaxe");
-        //    Boolean b4 = this.IsEquipped("pickaxe");
+        public float AxePickaxeValue()
+        {
+            Boolean b1 = this.Possesses("axe");
+            Boolean b2 = this.IsEquipped("axe");
+            Boolean b3 = this.Possesses("pickaxe");
+            Boolean b4 = this.IsEquipped("pickaxe");
 
-        //    if ((b1 || b2) && (b3 || b4))
-        //    {
-        //        return 1.0f;
-        //    }
-        //    else if ((WorldHas("tree") && (b1 || b2)) || (WorldHas("boulder") && (b3 || b4)))
-        //    {
-        //        return 0.75f;
-        //    }
-        //    else if (b1 || b2 || b3 || b4)
-        //    {
-        //        return 0.4f;
-        //    }
-        //    else
-        //    {
-        //        return 0.0f;
-        //    }
-        //}
+            if ((b1 || b2) && (b3 || b4))
+            {
+                return 1.0f;
+            }
+            else if ((WorldHas("tree") && (b1 || b2)) || (WorldHas("boulder") && (b3 || b4)))
+            {
+                return 0.75f;
+            }
+            else if (b1 || b2 || b3 || b4)
+            {
+                return 0.4f;
+            }
+            else
+            {
+                return 0.0f;
+            }
+        }
 
         public float FoodValue()
         {

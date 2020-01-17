@@ -13,6 +13,11 @@ namespace MCTS.DST.Actions
         public string Target;
         public float Duration;
         public int Quantity;
+        public static List<string> Pickables = new List<string>() //List of values for each pickable item 
+        {
+            "twigs",
+            "flint"
+        };
 
         public Pickup(string target, int quantity) : base("Pickup_" + target)
         {
@@ -36,7 +41,7 @@ namespace MCTS.DST.Actions
 
         public override List<Pair<string, string>> Decompose(PreWorldState preWorldState)
         {
-            int guid = preWorldState.GetInventoryGUID(this.Target);
+            int guid = preWorldState.GetEntitiesGUID(this.Target);
 
             List<Pair<string, string>> ListOfActions = new List<Pair<string, string>>(1);
             Pair<string, string> pair;

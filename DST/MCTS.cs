@@ -38,7 +38,7 @@ namespace MCTS.DST
 
         public void InitializeMCTSearch()
         {
-            this.MaxPlayoutDepthReached = 4;
+            this.MaxPlayoutDepthReached = 2;
             this.MaxSelectionDepthReached = 2;
             this.CurrentIterations = 0;
             this.InitialNode = new MCTSNode(this.CurrentState)
@@ -62,7 +62,7 @@ namespace MCTS.DST
             Console.WriteLine("Running MCTS Search");
             while ( this.CurrentIterations<this.MaxIterations ) {
 
-                Console.WriteLine("Iteration: " + this.CurrentIterations);
+                //Console.WriteLine("Iteration: " + this.CurrentIterations);
 
                 selectedNode = this.Selection(this.InitialNode);
                 reward = Playouts(selectedNode.State);
@@ -85,14 +85,14 @@ namespace MCTS.DST
                 nextAction = currentNode.State.GetNextAction();
                 if (nextAction != null)
                 {
-                    Console.WriteLine("Testes action: " + nextAction);
+                    //Console.WriteLine("Testes action: " + nextAction);
 
                     return Expand(currentNode, nextAction);
                 }
                 else
                 {
                     currentNode = this.BestUCTChild(currentNode);
-                    Console.WriteLine("null action found");
+                    // Console.WriteLine("null action found");
                 }
 
                 CurrentDepth++;
@@ -130,7 +130,7 @@ namespace MCTS.DST
 
                 float reward = Playout(initialPlayoutState);
                 rewards.Add(reward);
-                Console.WriteLine("Reward: " + reward);
+                //Console.WriteLine("Reward: " + reward);
                 total += reward;
                 
             }
@@ -143,9 +143,10 @@ namespace MCTS.DST
             else
                 return ratio * 0.4f;
                 */
-            Console.WriteLine("ratio: " + ratio);
-            Console.WriteLine("init score: " + initialPlayoutState.Score(initialPlayoutState));
+            //Console.WriteLine("ratio: " + ratio);
+            //Console.WriteLine("init score: " + initialPlayoutState.Score(initialPlayoutState));
             if (ratio > initialPlayoutState.Score(initialPlayoutState))
+           
             {
                 return 1;
             }
@@ -193,6 +194,7 @@ namespace MCTS.DST
             {
                 node.N++;
                 node.Q += reward;
+                Console.WriteLine("Propagated N Q:" + node.N + " " + node.Q);
                 node = node.Parent;
             }
         }
@@ -225,7 +227,7 @@ namespace MCTS.DST
             MCTSNode bestNode = null;
 
             int i = 0;
-            Console.WriteLine("Evaulated actions: " + node.ChildNodes.Count);
+            //Console.WriteLine("Evaulated actions: " + node.ChildNodes.Count);
 
             while (i < node.ChildNodes.Count)
             {

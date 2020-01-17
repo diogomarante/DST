@@ -45,6 +45,7 @@ namespace MCTS.DST.WorldModels
             //
 
 
+
             //<OPTIMIZATION - generalized cases from action's own lists>
             //Getting Eat based Actions
             foreach (var food in Eat.FoodIndex.Keys)
@@ -56,6 +57,33 @@ namespace MCTS.DST.WorldModels
                     this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
                 }
             }
+
+            foreach (var recipe in Build.Recipes)
+            {
+                bool EnoughIngredients = true;
+                foreach (var ingredient in recipe.Value)
+                {
+                    if (!Possesses(ingredient.Key, ingredient.Value))
+                    {
+                        EnoughIngredients = false;
+                    }
+                }
+                if (EnoughIngredients)
+                {
+                    string recipeName = recipe.Key;
+                    if (recipeName == "campfire" || recipeName == "firepit")
+                    {
+                        this.AvailableActions.Add(new Build(this.Walter.GetPosX(), this.Walter.GetPosZ(), recipeName));
+
+                    }
+                    else
+                    {
+                        this.AvailableActions.Add(new Build(recipeName));
+                    }
+                }
+            }
+
+           
 
             //Getting Pick based Actions
             foreach (var pickable in Pick.PickableConverter.Keys)
@@ -96,6 +124,8 @@ namespace MCTS.DST.WorldModels
             }
 
             //this.checkAvailableActions();
+            this.AvailableActions.Add(new Wander());
+
         }
 
         public void checkAvailableActions()
@@ -124,17 +154,8 @@ namespace MCTS.DST.WorldModels
             float statusIncrease(float ratio)
             {
                 float sum = 0;
-                //sum += newWorld.Walter.HP - this.Walter.HP;
-                //Console.WriteLine("HP: " + sum);
-                Console.WriteLine("Hunger old: " + this.Walter.Hunger);
-
-                Console.WriteLine("Hunger new: " + newWorld.Walter.Hunger);
                 sum +=  newWorld.Walter.Hunger - this.Walter.Hunger;
-                Console.WriteLine("Hunger: " + sum);
-
                 sum += newWorld.Walter.Sanity - this.Walter.Sanity;
-                Console.WriteLine("Sanity: " + sum);
-
                 return sum * ratio;
             }
 
@@ -174,6 +195,8 @@ namespace MCTS.DST.WorldModels
                 return sum * ratio;
             }
         }
+
+
     
 
         //Getting next action for mcts selection

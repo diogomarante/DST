@@ -17,6 +17,14 @@ namespace MCTS.DST.Actions
         {
             "twigs",
             "flint",
+            "log",
+            "torch",
+            "cutgrass",
+            "carrot",
+            "berries",
+            "rocks",
+            "axe",
+            "pickaxe",
         };
 
         public Pickup(string target, int quantity) : base("Pickup_" + target)

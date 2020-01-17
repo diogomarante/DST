@@ -194,7 +194,6 @@ namespace MCTS.DST
             {
                 node.N++;
                 node.Q += reward;
-                Console.WriteLine("Propagated N Q:" + node.N + " " + node.Q);
                 node = node.Parent;
             }
         }
@@ -231,9 +230,9 @@ namespace MCTS.DST
 
             while (i < node.ChildNodes.Count)
             {
-                Console.WriteLine("Evaulated action: " + node.ChildNodes[i].Action);
+                //Console.WriteLine("Evaulated action: " + node.ChildNodes[i].Action);
                 averageQ = node.ChildNodes[i].Q / node.ChildNodes[i].N;
-                Console.WriteLine("Q and N: " + node.ChildNodes[i].Q + " " + node.ChildNodes[i].N);
+                //Console.WriteLine("Q and N: " + node.ChildNodes[i].Q + " " + node.ChildNodes[i].N);
 
                 if (averageQ > bestAverageQ)
                 {
@@ -241,7 +240,7 @@ namespace MCTS.DST
                     bestNode = node.ChildNodes[i];
                 }
                 i++;
-                Console.WriteLine("Value: " + averageQ);
+                //Console.WriteLine("Value: " + averageQ);
 
             }
             return bestNode.Action;

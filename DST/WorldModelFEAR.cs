@@ -19,9 +19,9 @@ namespace MCTS.DST.WorldModels
             pickaxe = 9,
         }
 
-        public new int[] WorldObjects;
+        public int[] WorldObjects;
         public Pair<int, int>[] WorldObjectsPos;
-        public new int[] PossessedItems;
+        public int[] PossessedItems;
 
         public HandleableEquipment HandEquipped;            //Given the considered items, only handleable ones exist, therefore a single value will sufice
 
@@ -133,11 +133,6 @@ namespace MCTS.DST.WorldModels
             //Getting Available Actions
 
             getActions();
-        }
-
-        public List<ActionDST> GetExecutableActions()
-        {
-            return this.AvailableActions;
         }
 
         public WorldModelFEAR_DST()

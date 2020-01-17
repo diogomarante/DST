@@ -65,7 +65,7 @@ namespace MCTS.DST.Actions
 
                 if (this.X != "-" && this.Y != "-")
                 {
-                    worldModel.AddToFire(this.Recipe, Convert.ToInt32(this.X), Convert.ToInt32(this.Y));
+                    worldModel.AddToWorld(this.Recipe, 1, Convert.ToInt32(this.X), Convert.ToInt32(this.Y));
                 }
 
 //                if (!worldModel.Possesses(this.Recipe))

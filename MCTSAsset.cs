@@ -87,7 +87,7 @@ namespace MCTS
                 PreWorldState preWorldState = new PreWorldState(kbCloned);
                
 
-                WorldModelDST worldModel = new WorldModelDST(preWorldState);
+                WorldModelDST worldModel = new WorldModelOLD_DST(preWorldState);
 
                 Console.WriteLine("Available Actions: ");
 

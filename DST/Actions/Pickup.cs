@@ -13,10 +13,10 @@ namespace MCTS.DST.Actions
         public string Target;
         public float Duration;
         public int Quantity;
-        public static List<string> Pickables = new List<string>() //List of values for each pickable item 
+        public static List<string> Pickupables = new List<string>() //List of values for each pickupable item 
         {
             "twigs",
-            "flint"
+            "flint",
         };
 
         public Pickup(string target, int quantity) : base("Pickup_" + target)

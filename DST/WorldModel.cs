@@ -203,22 +203,12 @@ namespace MCTS.DST.WorldModels
             float total = 0;
             total += statusIncrease(0.2f);
             int i = 0;
-            Console.WriteLine("Score: " + i++ + " " + total);
             total += statusLow(1);
-            Console.WriteLine("Score: " + i++ + " " + total);
-
             total += inventoryIncreased(0.5f);
-            Console.WriteLine("Score: " + i++ + " " + total);
-
             total += hasAxes(1); 
-            Console.WriteLine("Score: " + i++ + " " + total);
-
             total += this.LightValueDay() + this.LightValueNight();
-            Console.WriteLine("Score: " + i++ + " " + total);
-
             total += AxePickaxeValue();
-            Console.WriteLine("Score: " + i++ + " " + total);
-
+            total += HasFuel() ? 1 : 0;
             //Console.WriteLine("Score: " + total);
             return total;
 

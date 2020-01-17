@@ -21,7 +21,30 @@ namespace MCTS.DST {
         public List<Tuple<string, int, int>> Fire;
         public KB KnowledgeBase;
 
-       
+        public static Dictionary<string, string> RealEntityPrefabs = new Dictionary<string, string>()
+        {
+            {"sapling", "sapling"},
+            {"twigs", "twigs"},
+            {"berrybush", "berrybush"},
+            {"berrybush2", "berrybush"},
+            {"berrybush_juicy", "berrybush"},
+            {"log", "log"},
+            {"torch", "torch"},
+            {"grass", "grass"},
+            {"cutgrass", "cutgrass"},
+            {"carrot", "carrot"},
+            {"carrot_planted", "carrot_planted"},
+            {"berries", "berries"},
+            {"berries_juicy", "berries"},
+            {"rocks", "rocks"},
+            {"flint", "flint"},
+            {"axe", "axe"},
+            {"pickaxe", "pickaxe"},
+            {"campfire", "campfire"},
+            {"firepit", "firepit"},
+        };
+
+
         public PreWorldState(KB knowledgeBase)
         {
             this.KnowledgeBase = knowledgeBase;
@@ -204,6 +227,7 @@ namespace MCTS.DST {
                 boulder == "rock_petrified_tree_old");
         }
 
+        //<OPTIMIZATION - Dictionary for getting real prefabs>
         public string RealEntityPrefab(string entity)
         {
             if (IsTree(entity))
@@ -214,88 +238,16 @@ namespace MCTS.DST {
             {
                 return "boulder";
             }
-            else if (entity == "sapling")
+            else if (RealEntityPrefabs.ContainsKey(entity))
             {
-                return "sapling";
-            }
-            else if (entity == "twigs")
-            {
-                return "twigs";
-            }
-            else if (entity == "berrybush")
-            {
-                return "berrybush";
-            }
-            else if (entity == "berrybush2")
-            {
-                return "berrybush";
-            }
-            else if (entity == "berrybush_juicy")
-            {
-                return "berrybush";
-            }
-            else if (entity == "log")
-            {
-                return "log";
-            }
-            else if (entity == "torch")
-            {
-                return "torch";
-            }
-            else if (entity == "grass")
-            {
-                return "grass";
-            }
-            else if (entity == "cutgrass")
-            {
-                return "cutgrass";
-            }
-            else if (entity == "carrot")
-            {
-                return "carrot";
-            }
-            else if (entity == "carrot_planted")
-            {
-                return "carrot_planted";
-            }
-            else if (entity == "berries")
-            {
-                return "berries";
-            }
-            else if (entity == "berries_juicy")
-            {
-                return "berries";
-            }
-            else if (entity == "rocks")
-            {
-                return "rocks";
-            }
-            else if (entity == "flint")
-            {
-                return "flint";
-            }
-            else if (entity == "axe")
-            {
-                return "axe";
-            }
-            else if (entity == "pickaxe")
-            {
-                return "pickaxe";
-            }
-            else if (entity == "campfire")
-            {
-                return "campfire";
-            }
-            else if (entity == "firepit")
-            {
-                return "firepit";
+                return RealEntityPrefabs[entity];
             }
             else
             {
                 return "";
             }
-
         }
+        //</OPTIMIZATION>
 
         public Boolean IsFire(string prefab)
         {

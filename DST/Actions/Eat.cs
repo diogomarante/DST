@@ -15,9 +15,7 @@ namespace MCTS.DST.Actions
         public static Dictionary<string, int[]> FoodIndex = new Dictionary<string, int[]>() //List of values for each food (format: Hunger, HP)
         {
             {"berries", new int[] {9}},
-            {"berries_cooked", new int[] {13, 1}},
             {"carrot", new int[] {13, 1}},
-            {"carrot_cooked", new int[] {13, 3}},
         };
 
         public Eat(string target) : base("Eat_" + target)

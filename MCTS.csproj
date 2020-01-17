@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DST\Actions\ActionDST.cs" />
+    <Compile Include="DST\Actions\Build.cs" />
     <Compile Include="DST\Actions\Chop.cs" />
     <Compile Include="DST\Actions\Mine.cs" />
     <Compile Include="DST\Actions\Pickup.cs" />
@@ -39,6 +40,7 @@
     <Compile Include="DST\Actions\Equip.cs" />
     <Compile Include="DST\Actions\Drop.cs" />
     <Compile Include="DST\Actions\NextAction.cs" />
+    <Compile Include="DST\Actions\Pick.cs" />
     <Compile Include="DST\Character.cs" />
     <Compile Include="DST\Actions\Eat.cs" />
     <Compile Include="DST\MCTS.cs" />
@@ -46,7 +48,9 @@
     <Compile Include="DST\ObjectProperties.cs" />
     <Compile Include="DST\PreWorldState.cs" />
     <Compile Include="DST\Actions\Wander.cs" />
+    <Compile Include="DST\WorldModelOLD.cs" />
     <Compile Include="DST\WorldModel.cs" />
+    <Compile Include="DST\WorldModelFEAR.cs" />
     <Compile Include="MCTSAsset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

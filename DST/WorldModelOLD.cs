@@ -83,6 +83,17 @@ namespace MCTS.DST.WorldModels
         {
         }
 
+
+        public override void PrintWorldObjects(List<string> objects)
+        {
+
+        }
+
+        public override List<string> CheckWorldObjects()
+        {
+            return null;
+        }
+
         public override WorldModelDST GenerateChildWorldModel()
         {
             Character walter = new Character(this.Walter.HP, this.Walter.Hunger, this.Walter.Sanity, this.Walter.Position.Item1, this.Walter.Position.Item2);

@@ -133,10 +133,35 @@ namespace MCTS.DST.WorldModels
             //Getting Available Actions
 
             getActions();
+            PrintWorldObjects(CheckWorldObjects());
+ 
         }
 
         public WorldModelFEAR_DST()
         {
+        }
+
+        public override void PrintWorldObjects(List<string> objects)
+        {
+            Console.WriteLine("Objects:");
+            foreach (var obj in objects)
+            {
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine("");
+        }
+
+        public override List<string> CheckWorldObjects()
+        {
+            List<string> objects = new List<string>();
+            foreach( var obj in WorldObjectsIndex)
+            {
+                if (this.WorldObjects[obj.Value] > 0)
+                {
+                    objects.Add(obj.Key);
+                }
+            }
+            return objects;
         }
 
         public override WorldModelDST GenerateChildWorldModel()

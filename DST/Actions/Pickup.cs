@@ -44,6 +44,11 @@ namespace MCTS.DST.Actions
 
             worldModel.RemoveFromWorld(this.Target, this.Quantity);
 
+            if (!worldModel.WorldHas(this.Target))
+            {
+                worldModel.RemoveAction("Pickup_" + this.Target);
+            }
+
 
         }
 

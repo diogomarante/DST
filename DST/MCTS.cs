@@ -61,7 +61,7 @@ namespace MCTS.DST
 
             Console.WriteLine("Running MCTS Search");
             while ( this.CurrentIterations<this.MaxIterations ) {
-
+               
                 //Console.WriteLine("Iteration: " + this.CurrentIterations);
 
                 selectedNode = this.Selection(this.InitialNode);
@@ -92,7 +92,7 @@ namespace MCTS.DST
                 else
                 {
                     currentNode = this.BestUCTChild(currentNode);
-                    // Console.WriteLine("null action found");
+                    //Console.WriteLine("null action found");
                 }
 
                 CurrentDepth++;
@@ -145,15 +145,7 @@ namespace MCTS.DST
                 */
             //Console.WriteLine("ratio: " + ratio);
             //Console.WriteLine("init score: " + initialPlayoutState.Score(initialPlayoutState));
-            if (ratio > initialPlayoutState.Score(initialPlayoutState))
-           
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
+            return ratio;
 
         }
 
@@ -171,7 +163,7 @@ namespace MCTS.DST
                 actions = clone.GetExecutableActions();
                 foreach(var a in actions)
                 {
-                   // Console.WriteLine(a);
+                   //Console.WriteLine(a);
 
                 }
 

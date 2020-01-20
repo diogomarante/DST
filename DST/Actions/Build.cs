@@ -79,7 +79,7 @@ namespace MCTS.DST.Actions
         {
             List<Pair<string, string>> ListOfActions = new List<Pair<string, string>>(1);
 
-            Pair<string, string> pair = new Pair<string, string>("Action(Build, -, " + this.X + ", " + this.Z + ", " + this.Recipe + ")", "-");
+            Pair<string, string> pair = new Pair<string, string>("Action(BUILD, -, " + this.X + ", " + this.Z + ", " + this.Recipe + ")", "-");
 
             ListOfActions.Add(pair);
 

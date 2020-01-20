@@ -47,7 +47,7 @@ namespace MCTS.DST.Actions
             int targetGuid = preWorldState.GetEntitiesGUID(this.Target);
 
             List<Pair<string, string>> ListOfActions = new List<Pair<string, string>>(1);
-            Pair<string, string> pair = new Pair<string, string>("Action(Pick, -, -, -, -)", targetGuid.ToString());
+            Pair<string, string> pair = new Pair<string, string>("Action(PICK, -, -, -, -)", targetGuid.ToString());
 
             ListOfActions.Add(pair);
 

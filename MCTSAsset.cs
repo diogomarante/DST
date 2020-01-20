@@ -94,7 +94,7 @@ namespace MCTS
 
                 foreach (var action in worldModel.AvailableActions)
                 {
-                    Console.WriteLine(action.Name);
+                    Console.WriteLine("\t"+action.Name);
                 }
                 Console.WriteLine("");
               

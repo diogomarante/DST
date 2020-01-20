@@ -13,7 +13,8 @@ namespace MCTS.DST.Actions
         public string Target;
         public float Duration;
 
-        public Chop(string target) : base("Chop_" + target)
+
+        public Chop(string target, int posX, int posZ) : base("Chop_" + target)
         {
             this.Target = target;
             this.Duration = 0.05f;
@@ -25,7 +26,8 @@ namespace MCTS.DST.Actions
         {
             worldModel.Cycle += this.Duration;
             worldModel.RemoveFromWorld(this.Target, 1);
-            worldModel.AddToPossessedItems("log", 2);
+            worldModel.AddToWorld("log", 2, worldModel.Walter.GetPosX(), worldModel.Walter.GetPosZ());
+            worldModel.AvailableActions.Add(new Pickup("log", 1));
         }
 
         public override List<Pair<string, string>> Decompose(PreWorldState preWorldState)

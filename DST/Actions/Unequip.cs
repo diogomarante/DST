@@ -24,7 +24,6 @@ namespace MCTS.DST.Actions
         {
             worldModel.Cycle += this.Duration;
 
-            worldModel.AddToPossessedItems(this.Target, 1);
             worldModel.RemoveFromEquipped(this.Target);
             worldModel.RemoveAction("Unequip_" + this.Target);
 
@@ -32,7 +31,7 @@ namespace MCTS.DST.Actions
 
         public override List<Pair<string, string>> Decompose(PreWorldState preWorldState)
         {
-            int guid = preWorldState.GetInventoryGUID(this.Target);
+            int guid = preWorldState.GetEquippedGUID(this.Target);
 
             List<Pair<string, string>> ListOfActions = new List<Pair<string, string>>(1);
             Pair<string, string> pair;

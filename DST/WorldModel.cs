@@ -52,7 +52,7 @@ namespace MCTS.DST.WorldModels
                 if (quantity > 0)
                 {
                     this.AvailableActions.Add(new Eat(food));
-                    //this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
+                    this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
                 }
             }
 
@@ -99,6 +99,11 @@ namespace MCTS.DST.WorldModels
                 {
                     this.AvailableActions.Add(new Equip(weapon));
                 }
+                if (IsEquipped(weapon))
+                {
+                    this.AvailableActions.Add(new Unequip(weapon));
+                    //this.AvailableActions.Add(new drop(weapon), 1);
+                }
             }
 
             if (IsEquipped("axe") && WorldHas("tree"))
@@ -108,7 +113,7 @@ namespace MCTS.DST.WorldModels
 
             foreach (var pickupable in Pickup.Pickupables)
             {
-                if (WorldHas(pickupable))
+                if (WorldHas(pickupable) && pickupable != "torch") //FATIMA limitation
                 {
                     this.AvailableActions.Add(new Pickup(pickupable, 1));
                 }
@@ -117,6 +122,11 @@ namespace MCTS.DST.WorldModels
             if (IsEquipped("pickaxe") && WorldHas("boulder"))
             {
                 this.AvailableActions.Add(new Mine("boulder"));
+            }
+
+            foreach (var item in this.GetPossessedItems() )
+            {
+                this.AvailableActions.Add(new Drop(item, GetQuantity(item), this.Walter.Position));
             }
 
 
@@ -150,7 +160,7 @@ namespace MCTS.DST.WorldModels
                 { "fuel", 0.2f},
             };
 
-            float HpWeight = 1, HungerWeight = 1, TimeWeight = 2, CollectorWeight = 1;
+            float HpWeight = 1, HungerWeight = 1, TimeWeight = 2, InventoryWeight = 1;
 
             float total = 0;
             //            updateDict("status", statusLow());
@@ -177,10 +187,64 @@ namespace MCTS.DST.WorldModels
                 return IsNight() ? this.LightValueNight() * TimeWeight : this.LightValueDay() * TimeWeight;
             }
 
+            float InventoryVal(int threshold, float complexValue)
+            {
+                float val = 0;
+                float totalInv = 0;
+                List<string> complexItem = new List<string>()
+                {
+                    "campfire",
+                    "firepit",
+                    "torch",
+                    "axe",
+                    "pickaxe"
+                };
+                List<string> rawItem = new List<string>()
+                {
+                    "twigs",
+                    "flint",
+                    "log",
+                    "cutgrass",
+                    "carrot",
+                    "berries",
+                    "rocks",
+                };
+                
+                foreach ( var pickupable in rawItem )
+                {
+                    for (int i = 1; i< threshold+ 1; i++, totalInv++)
+                    {
+                         if (Possesses(pickupable, i))
+                        {
+                            val++;
+                        }
+                    }
+                } 
+                foreach ( var pickupable in complexItem )
+                {
+                    if (pickupable == "campfire" || pickupable == "firepit")
+                    {
+                        val += WorldHas(pickupable) ? complexValue : 0;
+                        total += complexValue;
+                    }
+                    else
+                    {
+                        for (int i = 1; i < threshold + 1; i++, totalInv += complexValue)
+                            if (Possesses(pickupable, i))
+                            {
+                                val += complexValue;
+                            }
+                    }
+                    
+                }
+                return val* InventoryWeight/ totalInv;
+            }
+
             float MathInvHyperbolicIncrease(float x)
             {
                 return (-1 / (1 + 10 * x)) + 1;                     //Nice inverted Hyperbolic increase
             }
+
 
             void updateDict(string key, float value)
             {
@@ -240,7 +304,7 @@ namespace MCTS.DST.WorldModels
             //                return sum * RatioDict["axes"] ;
             //            }
 
-            return HpVal(this.Walter.Hunger) + HungerVal(this.Walter.Hunger) + TimeVal();
+            return HpVal(this.Walter.HP) + HungerVal(this.Walter.Hunger) + TimeVal() + InventoryVal(3, 3f);
         }
 
 
@@ -269,6 +333,8 @@ namespace MCTS.DST.WorldModels
         {
         }
 
+        public abstract List<string> GetPossessedItems();
+
         public abstract void PrintWorldObjects(List<string> objects);
         public abstract List<string> CheckWorldObjects();
 
@@ -276,6 +342,8 @@ namespace MCTS.DST.WorldModels
         public abstract WorldModelDST GenerateChildWorldModel();
 
         public abstract int InventoryQuantity();
+
+        public abstract void PrintInventory();
 
         public abstract int FoodQuantity();
 

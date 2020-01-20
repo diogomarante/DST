@@ -88,6 +88,10 @@ namespace MCTS.DST.WorldModels
         {
 
         }
+        public override void PrintInventory()
+        {
+
+        }
 
         public override List<string> CheckWorldObjects()
         {
@@ -176,6 +180,11 @@ namespace MCTS.DST.WorldModels
                 }
             }
             return 0;
+        }
+
+        public override List<string> GetPossessedItems()
+        {
+            return null;
         }
         public override Boolean Possesses(string prefab)
         {

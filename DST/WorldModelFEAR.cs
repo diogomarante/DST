@@ -134,7 +134,7 @@ namespace MCTS.DST.WorldModels
 
             getActions();
             PrintWorldObjects(CheckWorldObjects());
- 
+            PrintInventory();
         }
 
         public WorldModelFEAR_DST()
@@ -143,13 +143,36 @@ namespace MCTS.DST.WorldModels
 
         public override void PrintWorldObjects(List<string> objects)
         {
+            Console.WriteLine("");
             Console.WriteLine("Objects:");
             foreach (var obj in objects)
             {
-                Console.WriteLine(obj);
+                Console.WriteLine("\t" + obj);
             }
             Console.WriteLine("");
         }
+
+        public override void PrintInventory()
+        {
+            Console.WriteLine("Inventory: ");
+
+            foreach (var index in PossessedItemsIndex)
+            {
+                if (PossessedItems[index.Value] > 0)
+                {
+                    Console.WriteLine("\t" + index.Key + ": " + PossessedItems[index.Value]);
+
+                }
+            }
+            Console.WriteLine("");
+
+            Console.WriteLine("Status: ");
+            Console.WriteLine("\tHP: " + this.Walter.HP);
+            Console.WriteLine("\tHunger: " + this.Walter.Hunger);
+
+
+        }
+
 
         public override List<string> CheckWorldObjects()
         {
@@ -213,6 +236,19 @@ namespace MCTS.DST.WorldModels
         public override int GetQuantity(string prefab)
         {
             return this.PossessedItems[PossessedItemsIndex[prefab]];
+        }
+
+        public override List<string> GetPossessedItems()
+        {
+            List<string> items = new List<string>();
+            foreach (var index in PossessedItemsIndex)
+            {
+                if (PossessedItems[index.Value] > 0)
+                {
+                    items.Add(index.Key);
+                }
+            }
+            return items;
         }
 
         public override Boolean Possesses(string prefab)

@@ -61,17 +61,26 @@ namespace MCTS.DST.Actions
                 foreach (var item in Recipes[this.Recipe])
                 {
                     worldModel.RemoveFromPossessedItems(item.Key, item.Value);
+
                 }
 
                 if (this.X != "-" && this.Z != "-")
                 {
                     worldModel.AddToWorld(this.Recipe, 1, Convert.ToInt32(this.X), Convert.ToInt32(this.Z));
                 }
+                else
+                {
+                    if (!worldModel.IsEquipped("torch") && !worldModel.IsEquipped("pickaxe") && !worldModel.IsEquipped("axe"))
+                        worldModel.AddToEquipped(this.Recipe);
 
-//                if (!worldModel.Possesses(this.Recipe))
-//                {
-//                    worldModel.RemoveAction("Build_" + this.Recipe);
-//                }
+                    worldModel.AddToPossessedItems(this.Recipe, 1);
+
+                }
+
+                //                if (!worldModel.Possesses(this.Recipe))
+                //                {
+                //                    worldModel.RemoveAction("Build_" + this.Recipe);
+                //                }
             }
         }
 

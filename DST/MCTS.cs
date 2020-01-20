@@ -177,7 +177,7 @@ namespace MCTS.DST
                 CurrentDepth++;
             }
             //return score
-            return initialPlayoutState.Score(clone);
+            return initialPlayoutState.Score();
         }
 
         protected virtual void Backpropagate(MCTSNode node, float reward)

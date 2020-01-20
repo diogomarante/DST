@@ -6,7 +6,7 @@ using MCTS.DST;
 
 namespace MCTS.DST.WorldModels
 {
-    public abstract class WorldModelDST 
+    public abstract class WorldModelDST
     {
         public Character Walter;
 
@@ -43,120 +43,86 @@ namespace MCTS.DST.WorldModels
 
 
             //Getting Wander
-            if (IsNight())
+
+            //<OPTIMIZATION - generalized cases from action's own lists>
+            //Getting Eat based Actions
+            foreach (var food in Eat.FoodIndex.Keys)
             {
-                foreach (var recipe in Build.Recipes)
+                int quantity = this.GetQuantity(food);
+                if (quantity > 0)
                 {
-                    bool EnoughIngredients = true;
-                    foreach (var ingredient in recipe.Value)
+                    this.AvailableActions.Add(new Eat(food));
+                    //this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
+                }
+            }
+
+            foreach (var recipe in Build.Recipes)
+            {
+                bool EnoughIngredients = true;
+                foreach (var ingredient in recipe.Value)
+                {
+                    if (!Possesses(ingredient.Key, ingredient.Value))
                     {
-                        if (!Possesses(ingredient.Key, ingredient.Value))
-                        {
-                            EnoughIngredients = false;
-                        }
+                        EnoughIngredients = false;
                     }
-                    if (EnoughIngredients)
+                }
+                if (EnoughIngredients)
+                {
+                    string recipeName = recipe.Key;
+
+                    if (recipeName == "campfire" || recipeName == "firepit")
                     {
-                        string recipeName = recipe.Key;
-
-                        if (recipeName == "campfire" || recipeName == "firepit" || recipeName == "torch")
-                        {
-                            this.AvailableActions.Add(recipeName == "torch" ? new Build(recipeName) :
-                                           new Build(this.Walter.GetPosX(), this.Walter.GetPosZ(), recipeName));
-
-                        }
+                        this.AvailableActions.Add(new Build(this.Walter.GetPosX(), this.Walter.GetPosZ(), recipeName)); ;
+                    }
+                    else
+                    {
+                        this.AvailableActions.Add(new Build(recipeName));
                     }
                 }
             }
-            else
+
+
+
+            //Getting Pick based Actions
+            foreach (var pickable in Pick.PickableConverter.Keys)
             {
-                //
-
-
-
-                //<OPTIMIZATION - generalized cases from action's own lists>
-                //Getting Eat based Actions
-                foreach (var food in Eat.FoodIndex.Keys)
+                if (WorldHas(pickable))
                 {
-                    int quantity = this.GetQuantity(food);
-                    if (quantity > 0)
-                    {
-                        this.AvailableActions.Add(new Eat(food));
-                        //this.AvailableActions.Add(new Drop(food, quantity, this.Walter.Position));
-                    }
+                    this.AvailableActions.Add(new Pick(pickable));
                 }
-
-                foreach (var recipe in Build.Recipes)
-                {
-                    bool EnoughIngredients = true;
-                    foreach (var ingredient in recipe.Value)
-                    {
-                        if (!Possesses(ingredient.Key, ingredient.Value))
-                        {
-                            EnoughIngredients = false;
-                        }
-                    }
-                    if (EnoughIngredients)
-                    {
-                        string recipeName = recipe.Key;
-
-                        if (recipeName == "campfire" || recipeName == "firepit" || recipeName == "torch")
-                        {
-                            continue;
-
-                        }
-                        else
-                        {
-                            this.AvailableActions.Add(new Build(recipeName));
-                        }
-                    }
-                }
-
-
-
-                //Getting Pick based Actions
-                foreach (var pickable in Pick.PickableConverter.Keys)
-                {
-                    if (WorldHas(pickable))
-                    {
-                        this.AvailableActions.Add(new Pick(pickable));
-                    }
-                }
-                //</OPTIMIZATION>
-
-                foreach (var weapon in Equip.Weapons)
-                {
-                    if (Possesses(weapon))
-                    {
-                        this.AvailableActions.Add(new Equip(weapon));
-                    }
-                }
-
-                if (IsEquipped("axe") && WorldHas("tree"))
-                {
-                    this.AvailableActions.Add(new Chop("tree"));
-                }
-
-                //TODO dict in Pickup action with all pickable items
-
-                foreach (var pickupable in Pickup.Pickupables)
-                {
-                    if (WorldHas(pickupable))
-                    {
-                        this.AvailableActions.Add(new Pickup(pickupable, 1));
-                    }
-                }
-
-                if (IsEquipped("pickaxe") && WorldHas("boulder"))
-                {
-                    this.AvailableActions.Add(new Mine("boulder"));
-                }
-
-
-
-                //this.checkAvailableActions();
-                this.AvailableActions.Add(new Wander());
             }
+            //</OPTIMIZATION>
+
+            foreach (var weapon in Equip.Weapons)
+            {
+                if (Possesses(weapon))
+                {
+                    this.AvailableActions.Add(new Equip(weapon));
+                }
+            }
+
+            if (IsEquipped("axe") && WorldHas("tree"))
+            {
+                this.AvailableActions.Add(new Chop("tree"));
+            }
+
+            foreach (var pickupable in Pickup.Pickupables)
+            {
+                if (WorldHas(pickupable))
+                {
+                    this.AvailableActions.Add(new Pickup(pickupable, 1));
+                }
+            }
+
+            if (IsEquipped("pickaxe") && WorldHas("boulder"))
+            {
+                this.AvailableActions.Add(new Mine("boulder"));
+            }
+
+
+
+            //this.checkAvailableActions();
+            this.AvailableActions.Add(new Wander());
         }
 
         public void checkAvailableActions()
@@ -173,7 +139,7 @@ namespace MCTS.DST.WorldModels
             return Cycle % daytime > (daytime - CycleInfo[2]);
         }
 
-        public float Score(WorldModelDST newWorld)
+        public float Score()
         {
             Dictionary<string, float> RatioDict = new Dictionary<string, float>()
             {
@@ -183,17 +149,38 @@ namespace MCTS.DST.WorldModels
                 { "light", 0.3f},
                 { "fuel", 0.2f},
             };
-           
+
+            float HpWeight = 1, HungerWeight = 1, TimeWeight = 2, CollectorWeight = 1;
+
             float total = 0;
-            updateDict("status", statusLow());
-            total += statusIncrease();
-            total += inventoryIncreased();
-            total += IsNight() ? this.LightValueNight() * RatioDict["light"] : this.LightValueDay() * RatioDict["light"];
-            total += AxePickaxeValue() * hasAxes();
-            total += HasFuel() ? RatioDict["fuel"] : 0;
-            Console.WriteLine("Score: " + total);
+            //            updateDict("status", statusLow());
+            //            total += statusIncrease();
+            //            total += inventoryIncreased();
+            //            total += IsNight() ? this.LightValueNight() * RatioDict["light"] : this.LightValueDay() * RatioDict["light"];
+            //            total += AxePickaxeValue() * hasAxes();
+            //            total += HasFuel() ? RatioDict["fuel"] : 0;
+            //            Console.WriteLine("Score: " + total);
             //Console.WriteLine("Night?: " + IsNight());
-            return total;
+
+            float HpVal(int hp)
+            {
+                return (hp / 150) * HpWeight;       //HP is linear
+            }
+
+            float HungerVal(int hunger)
+            {
+                return MathInvHyperbolicIncrease(hunger / 150.0f) * HungerWeight;       //Hunger is linear
+            }
+
+            float TimeVal()
+            {
+                return IsNight() ? this.LightValueNight() * TimeWeight : this.LightValueDay() * TimeWeight;
+            }
+
+            float MathInvHyperbolicIncrease(float x)
+            {
+                return (-1 / (1 + 10 * x)) + 1;                     //Nice inverted Hyperbolic increase
+            }
 
             void updateDict(string key, float value)
             {
@@ -211,64 +198,67 @@ namespace MCTS.DST.WorldModels
                     RatioDict[otherkey] -= value / 4;
                 }
             }
+            //
+            //            float statusIncrease()
+            //            {
+            //                float sum = 0;
+            //                sum +=  newWorld.Walter.Hunger - this.Walter.Hunger;
+            //                sum += newWorld.Walter.Sanity - this.Walter.Sanity;
+            //                return sum > 0 ? 1 * RatioDict["status"] /300 : 0;
+            //            }
+            //
+            //            float statusLow()
+            //            {
+            //                float sum = 0;
+            //                if (newWorld.Walter.HP < 50)
+            //                {
+            //                    sum += 0.3f;
+            //                }
+            //                if (newWorld.Walter.Hunger > 50)
+            //                {
+            //                    sum += 0.1f;
+            //                }
+            //
+            //                return sum ;
+            //            }
+            //
+            //            float inventoryIncreased()
+            //            {
+            //                return (newWorld.InventoryQuantity() - this.InventoryQuantity()) * RatioDict["inventory"];
+            //            }
+            //
+            //            float hasAxes()
+            //            {
+            //                float sum = 0;
+            //                foreach ( var weapon in Equip.Weapons)
+            //                {
+            //                    if (newWorld.Possesses(weapon) || newWorld.IsEquipped(weapon))
+            //                    {
+            //                        sum += 0.5f;
+            //                    }
+            //                }
+            //                return sum * RatioDict["axes"] ;
+            //            }
 
-            float statusIncrease()
-            {
-                float sum = 0;
-                sum +=  newWorld.Walter.Hunger - this.Walter.Hunger;
-                sum += newWorld.Walter.Sanity - this.Walter.Sanity;
-                return sum > 0 ? 1 * RatioDict["status"] /300 : 0;
-            }
-
-            float statusLow()
-            {
-                float sum = 0;
-                if (newWorld.Walter.HP < 50)
-                {
-                    sum += 0.3f;
-                }
-                if (newWorld.Walter.Hunger > 50)
-                {
-                    sum += 0.1f;
-                }
-
-                return sum ;
-            }
-
-            float inventoryIncreased()
-            {
-                return (newWorld.InventoryQuantity() - this.InventoryQuantity()) * RatioDict["inventory"];
-            }
-
-            float hasAxes()
-            {
-                float sum = 0;
-                foreach ( var weapon in Equip.Weapons)
-                {
-                    if (newWorld.Possesses(weapon) || newWorld.IsEquipped(weapon))
-                    {
-                        sum += 0.5f;
-                    }
-                }
-                return sum * RatioDict["axes"] ;
-            }
+            return HpVal(this.Walter.Hunger) + HungerVal(this.Walter.Hunger) + TimeVal();
         }
 
 
-    
+
 
         //Getting next action for mcts selection
         public ActionDST GetNextAction() //
         {
-            if (this.ActionTracker < this.AvailableActions.Count ) {
+            if (this.ActionTracker < this.AvailableActions.Count)
+            {
                 //Console.WriteLine("Tracker: " + ActionTracker);
                 int ActionTrackerOld = this.ActionTracker;
-                this.ActionTracker = (this.ActionTracker+1) % this.AvailableActions.Count;
+                this.ActionTracker = (this.ActionTracker + 1) % this.AvailableActions.Count;
 
-                return this.AvailableActions[ActionTrackerOld];               
+                return this.AvailableActions[ActionTrackerOld];
             }
             return null;
-      }
+        }
 
         public List<ActionDST> GetExecutableActions()
         {
@@ -310,10 +300,10 @@ namespace MCTS.DST.WorldModels
         public abstract void AddToWorld(string prefab, int quantity, int posx, int posz);
 
         public void RemoveAction(string actionName)
-        {          
-            foreach(ActionDST action in this.AvailableActions)
+        {
+            foreach (ActionDST action in this.AvailableActions)
             {
-                if(action.Name == actionName)
+                if (action.Name == actionName)
                 {
                     this.AvailableActions.Remove(action);
                     break;
@@ -442,7 +432,7 @@ namespace MCTS.DST.WorldModels
             }
             else
             {
-                hungerValue = Convert.ToSingle(1.0 / (Math.Pow(Convert.ToDouble((Convert.ToSingle(this.Walter.Hunger) - 150.0)/50.0), 2)));
+                hungerValue = Convert.ToSingle(1.0 / (Math.Pow(Convert.ToDouble((Convert.ToSingle(this.Walter.Hunger) - 150.0) / 50.0), 2)));
             }
 
             return hungerValue * 0.6f + invFoodValue * 0.4f;
